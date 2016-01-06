@@ -1,0 +1,84 @@
+<div class="main">
+
+  <!-- Nav Bar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/search">Dvelop.io</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav">
+          <!-- <li><a href="#/signup">MyProfile</a></li> -->
+          <li><a ui-sref="profile">MyProfile</a></li>
+          <li><a ui-sref="community">Community</a></li>
+          <li><a ui-sref="channels">Messages</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li ng-click="search.logout()"><a href="#">Logout</a></li> -->
+          <li><a href="#" ng-click="channelsCtrl.logout()">logout</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+
+
+  <div class="sidebar">
+
+    <!-- <div class="slack-name">
+      <h2>Dvelop.io</h2>
+    </div> -->
+
+    <div class="channel-list">
+      <div class="list-head">Channels</div>
+      <div class="channel" ng-repeat="channel in channelsCtrl.channels">
+        <a ui-sref="channels.messages({ channelId: channel.$id })"># {{ channel.name }}</a>
+      </div>
+      <div class="channel create">
+        <a ui-sref="channels.create">+ create channel</a>
+      </div>
+
+      <div class="list-head">Direct Messages</div>
+      <div class="channel" ng-repeat="user in channelsCtrl.users">
+        <a ng-if="user.$id !== channelsCtrl.profile.$id" ui-sref="channels.direct({uid: user.$id})" ui-sref-active="selected">
+          <span class="presence" ng-class="{online: user.online}"></span>
+          {{ user.displayName }}
+        </a>
+      </div>
+    </div>
+
+    <div class="my-info">
+      <img class="user-pic" ng-src="{{ channelsCtrl.getGravatar(channelsCtrl.profile.$id) }}" />
+      <div class="user-info">
+        <div class="user-name">
+          <span class="presence" ng-class="{online: channelsCtrl.profile.online}"></span>
+          {{ channelsCtrl.profile.displayName }}
+        </div>
+
+        <!-- <div class="options">
+          <a ui-sref="profile">edit profile</a>
+          /
+          <a href="#" ng-click="channelsCtrl.logout()">logout</a>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+
+  <div class="message-pane">
+    <ui-view></ui-view>
+  </div>
+
+</div>

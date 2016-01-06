@@ -1,0 +1,129 @@
+<div class="page-wrapper">
+
+  <!-- Nav Bar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/search">Dvelop.io</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav">
+          <!-- <li><a href="#/signup">MyProfile</a></li> -->
+          <li><a ui-sref="profile">MyProfile</a></li>
+          <li><a ui-sref="community">Community</a></li>
+          <li><a ui-sref="channels">Messages</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li ng-click="search.logout()"><a href="#">Logout</a></li> -->
+          <li><a href="#" ng-click="profileCtrl.logout()">logout</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+  <div class="page-header">
+    <h1>Edit Profile</h1>
+  </div>
+
+  <form ng-submit="profileCtrl.updateProfile()">
+    <!-- display name -->
+    <p ng-hide="profileCtrl.profile.displayName">
+      You'll need a display name before you can start chatting.
+    </p>
+    <div class="form-group">
+      <label for="displayname" class="col-sm-3 control-label">Display Name</label>
+      <div class="col-sm-9">
+        <input required type="text" class="form-control" id="displayname" placeholder="Display Name" ng-model="profileCtrl.profile.displayName">
+      </div>
+    </div>
+
+    <!-- name -->
+    <div class="form-group">
+      <label for="fullname" class="col-sm-3 control-label">Full Name</label>
+      <div class="col-sm-9">
+        <input type="text" id="fullname" class="form-control" ng-model="profileCtrl.profile.fullName" autofocus>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email" class="col-sm-3 control-label">Email</label>
+      <div class="col-sm-9">
+        <input type="email" id="email" class="form-control" ng-model="profileCtrl.profile.email" >
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="form-group">
+      <label for="location" class="col-sm-3 control-label">Location</label>
+      <div class="col-sm-9">
+        <input type="text" id="location" placeholder="City, State" ng-model="profileCtrl.profile.cityState" class="form-control">
+      </div>
+    </div>
+
+    <!-- Job -->
+    <div class="form-group">
+      <label for="job" class="col-sm-3 control-label">Job</label>
+      <div class="col-sm-9">
+        <input type="text" id="job" placeholder="What Puts Food on the Table" ng-model="profileCtrl.profile.job" class="form-control">
+      </div>
+    </div>    
+
+    <!-- Tech Skills -->
+    <div class="form-group">
+      <label for="techSkills" class="col-sm-3 control-label">Tech Skills</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" placeholder="Ex: Angular, CSS, etc." ng-model="profileCtrl.profile.techSkills">
+      </div>
+    </div>
+
+    <!-- Experience level -->
+    <div class="form-group">
+      <label for="experience" class="col-sm-3 control-label">Level</label>
+      <div class="col-sm-9">
+        <select id="experience" ng-model="profileCtrl.profile.level" class="form-control" placeholder="Select from dropdown.">
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+          <option>Professional</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Mentor? -->
+    <div class="form-group">
+      <label for="mentor" class="col-sm-3 control-label">Mentor?</label>
+      <div class="col-sm-9">
+        <select id="mentor" ng-model="profileCtrl.profile.mentorAvail" class="form-control">
+          <option value="Mentor">Yes, I'd like to be a mentor.</option>
+          <option value="Not">No, count me out. </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Collaborator? -->
+    <div class="form-group">
+      <label for="mentor" class="col-sm-3 control-label">Collaborator?</label>
+      <div class="col-sm-9">
+        <select id="mentor" ng-model="profileCtrl.profile.collaborator" class="form-control">
+          <option value="Collaborate">Yes, always looking for collaborators.</option>
+          <option value="Not">No, I'm more of a lone wolf.</option>
+        </select>
+      </div>
+    </div>
+
+    <input type="submit" class="btn btn-default" value="Update Profile">
+  </form>
+</div>
