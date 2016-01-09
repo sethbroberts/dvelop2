@@ -41,10 +41,9 @@ bower install
 
 ### Roadmap
 
-- Complete features:
+- Features:
   - Email authorization and log in with Firebase
-  - Logout functionality 
-  - User search
+  - Community page, with search
   - User profile page
   - DB implemented on Firebase
   - Chat rooms and private messaging
